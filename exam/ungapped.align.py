@@ -27,3 +27,43 @@ scoring_matrix = {'AA': 2, 'AC':-1, 'AT':-1, 'AG': 0,
 seq1 = 'TCA'
 seq2 = 'GA'
 
+# ungapped_seq1 = ["--TCA", "-TCA", "TCA", "TCA", "TCA-", "TCA--"]
+# ungapped_seq2 = ["GA---", "GA--", "GA-", "-GA", "--GA", "---GA"]
+
+def combinations(seq1, seq2):
+    list_seq1 = [] 
+    list_seq2 = [] 
+    total_len = len(seq1) + len(seq2)
+
+    for i in range(total_len - 1): #for a number in the range of the total length - one
+        if i > 0 and i <= total_len - len(seq2):
+             # if lenght of sequ1 ??? larger than 0 and lower than total lenght
+            list_seq2.append("-"*i + seq2)
+            if i == 1:
+                list_seq2.append(seq2 + "-"*i)
+            elif i == 2:
+                list_seq2.append(seq2 + "-"*i)
+                
+        if i <= total_len - len(seq1):
+            list_seq1.append(seq1 + "-"*i)
+            if i == 0:
+                list_seq1.append(seq1 + "-"*i)
+            elif i == 1:
+                list_seq1.append("-"*i + seq1)
+                
+    return list_seq1, list_seq2 
+
+def scoring_ungapped_alignment():
+    dic_sum = {}
+    for i in range(len(ungapped_seq1)):
+        sum = 0
+        seq1 = ungapped_seq1[i]
+        seq2 = ungapped_seq2[i]
+        for j in range(len(seq1)):
+            if seq1[j]+seq2[j] in score_matrix: 
+                sum += score_matrix[seq1[j] + seq2[j]]
+        dic_sum[seq1 + "/" + seq2] = sum
+    return dic_sum
+
+ungapped_seq1, ungapped_seq2 = combinations("TCA", "GA")
+print(scoring_ungapped_alignment())
