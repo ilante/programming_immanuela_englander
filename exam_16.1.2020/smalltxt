@@ -1,9 +1,33 @@
-just to see
+### Procedure 
+1. Write the short essay on paper
+2. If you have time, copy it to a text file
+3. Return the essay and upload the electronic version on your GitHub repository in the form:
+   <your_repo>/midterm_16012020/name_surname_theory.txt
 
-short essay
-copy to txt
-Return essay
-'pseudo-code' on paper
-script on paper
-Debug and run 
-Run ' pseudo code
+********************************************************************************************
+Questions (30% of the whole exam)
+********************************************************************************************
+Write a brief essay (400 < words < 600) critically discussing the following issues about alignments and substitution matrices:
+
+1) Discuss the scoring scheme we have seen in module 2 to evaluate an alignment between two biological sequences.
+2) What can we potentially deduce from a high scoring alignment? 
+3) How PAM and BLOSUM substitution matrices have been derived and how do we use them in the scoring scheme of point 1)?
+4) How/when do we use substitution matrices to score alignments obtained with the Needleman and Wunsch algorithm?
+
+Evaluation:
+1) 25%
+2) 20%
+3) 25%
+4) 30%
+
+
+Protein sequence alignments can be done globally (across the whole length of both sequences) or locally (across a part of the sequence, such as an active site, or a particular domain). To evaluate a sequence alignment a scoring scheme is necessary. An example of a simple scoring scheme is: -2 points for introducing a gap, +3 for a match (identical residue) +1 for a mismatch (aligning two different residues). That way a score of an alignment could be calculated. It is customary to give a higher penalty for opening a gap, than for the extension of the same. It is however important not to ‘over penalize’ gaps as it would lead to avoidance even where a gap would be meangingful. The same applies to a gap penalty set too low. A too low gap penalty would lead to insertion of gaps that are not meaningful. In that case an alignment could score high even if there is absolutely no relation between the two sequences.
+
+In bioinformatics scoring matrices such as PAM (Point Accepted Mutation) and BLOSUM (Block Substitution Matix) (Dayhoff and Heinikoff & Heinikoff respectively)are used to evaluate weather 2 or more sequences share common ancestor (i.e. are related) by comparing the level of conservation comparing the level of conservation. Since there are different ways an alignment could be carried out we need to be able to evaluate which the best one is.
+
+PAM was conceived in the 70ies. by Margaret Dayhoff, a pioneer in bioinformatics. For the ‘construction’ 71 protein families with an identity of at least 85% were considered. That way the likely substitution of one amino acid (aa) to another could be evaluated. PAMn where n is a number, shows how stringent the particular matrix is. PAM1 allows for example only 1 point accepted mutation per 99 amino acids. ‘Higher’ PAMs are calculate as follows i.e.:
+PAM1*PAM1 = (PAM1)ˆ2 = PAM2. The higher the number appended to PAM the less stringent it is. To evaluate the log odds where calculated: s(a,b)=log(P(a,b)/qa*qb) that way one can evaluate weather a substitution might have occurred by chance.
+
+BLOSUM was conceived by Heinikoff & Heinikoff years after PAM. Hence it is not surprising that they had more aa to their disposition. Blocks of the sequences where accessed in the Blocks database, again likely substitutions were evaluated and log odds calculated. For BLOSUM however the appended numbers indicate the opposite of the PAM: high numbers indicate a more stringent matrix.
+
+Needleman and Wunsh concieved an algorithm to enable global alignment via a dynamic programming approach: it is an exhaustive method (considering all options), to align sequences across their entire length. The algorithm needs to implement a scoring matrix such as BLOSUM as well. That way we can evaluate an alignment. The highest score shows the best alignment and the identity can help us to infer weather two sequences are related. We should consider the identity % and the length of the alignment to understand weather we are moving in the “i don’t know region” (Rost). Another purpose is to score alignments to evaluate evolutionary distances of the alignment(s). That way a phylogenetic tree may be inferred (or built). If to sequences are related they have a common ancestor.
