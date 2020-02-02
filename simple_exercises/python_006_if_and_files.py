@@ -16,22 +16,23 @@
 #         fivers.append(el)
 # print(fivers)
 # 4. change the list so it contains the numbers from 8 to 23
-linum = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-print(linum)
+# linum = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+# print(linum)
 
-longlist = []
-for el in linum:
-    if el >= 8:#:P
-        longlist.append(el)
+# longlist = []
+# for el in linum:
+#     if el >= 8:#:P
+#         longlist.append(el)
     
-print(longlist)
+# print(longlist)
 
-for number in longlist:
-    for i in range(11):
-        i=12
-        longlist.append(i+1)
+# for number in longlist:
+for i in range(12-23):
+    x=i
+    print(x)
+#         longlist.append(i)
 
-print(longlist)
+# print(longlist)
 
 
     
