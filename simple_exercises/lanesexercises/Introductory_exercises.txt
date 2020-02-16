@@ -1,0 +1,133 @@
+	Introductory exercises
+	Programming for Bioinformatics
+	(Originally from Giuseppe Profiti)
+
+For each set of exercises, the slides needed are used as section title.
+
+    Python-basic
+
+1. assign the value 7 to a variable, print it
+2. assign the value 3.14 to another variable
+3. check if the first variable value is even; what can you use?
+4. evaluate the average of the two variables
+5. change the value of the first variable with its double, subtract 1 to it and put the result into a third variable
+6. assign values to the four variables x1, y1, x2, y2
+7. evaluate the euclidean distance for the points (x1,y1) and (x2,y2)
+
+    Python-strings
+
+1. assign the string “fire and ice” to a variable
+2. print the third character in the string
+3. print the fifth character
+4. print the tenth character, print the last character, print the second to last
+5. print the characters in even position
+6. print the characters in odd position
+7. print the first half of the string
+8. print the whole string in reverse
+9. count the number of “i” and “e” in the string
+10. replace the word “and” with “&”
+11. check if the string contains the string “fire”
+12. check if the string contains the string “re and”
+13. check if the string contains the string “re &”
+14. print the position of the first “e”
+15. print the position of the last “e”
+
+    Python-functions
+
+1. define a function called “increase” that adds one to a given number
+2. define a function called “add” that returns the sum of two numbers
+3. define a function called “add3” that returns the sum of three numbers
+4. define a function called “add5” that returns the sum of five numbers
+5. define a function that takes as input a number and a string and returns as many copies of the string as specified by the number. I.e. manyTimes(3,’dad’) should return ‘daddaddad’
+6. modify the previous function so that it returns something like ‘dad,dad,dad’
+7. modify the function at point 5 so you can specify a separator instead of just using the comma like in point 6
+
+   Python-lists and for loop
+
+1. merge the lists [4,8,-9,”the”] and [“silent force”, 4.67, 9]
+2. extract the numbers from the string “23|64|354|-123”
+3. define a function called “addlist” that returns the sum of the elements of any list
+4. use the function addlist from point 3 to sum the numbers from point 2
+5. write a function that takes a list of integers and computes the list of its partial sums
+6. write a function that takes an integer n and prints a square of n*n #
+7. print the multiplication table
+
+   Python-if and files
+   
+1. create a list of numbers from 3 to 12
+2. print the numbers of the list that are odd
+3. print the numbers of the list that are multiples of 5
+4. put the values 5,2,7,8,1,-3 in a list, in this order
+5. print the first and the third value in the list
+6. print the double of all the values in the list
+7. print each value in the list after doubling it, subtracting 2 and dividing by 3
+8. print the sum of all the numbers in the list
+9. print the minimum value in the list
+10. print the maximum value in the list
+11. print the average value
+12. put the string “avocado” in a variable and the string “radar” in another one
+13. print both strings in reverse
+14. evaluate whether any of the two strings is palindrome (i.e. a string is palindrome if it can be read in the same way both from left to right and from right to left)
+15. print the first half of the first string and the second half of the second one
+16. ask the user for two strings
+17. check if one string is the complement of the other (i.e. “AC” and “TG” -> yes)
+18. print 3 rows: the first and the third for the sequences, the second one should contain “|” if
+the bases are complementary, “X” if not. Example:
+ATTCGT
+||X|X|
+TAGGAA
+22. Modify the program from point 18 in order to print also the number of non complementary positions (in the given example: 2)
+23. Modify the previous programs in order to read the sequences from file, using them in pairs (i.e. first row with second row, third with fourth and so on) Note: each pair of strings must have the same length (i.e. first and second row must have the same length, for example 6, third and fourth row may have both length 9 etc)
+24. Modify the previous programs in order to read the sequences from file, checking for each one with all the others of the same length for the one with the smallest number of non complementary positions. Print each string with its best match and score as in point 22.
+Example:
+Input file
+ATTCGT
+TAGGAA
+TCAGCA
+AAAAAAAAA
+TTTTTTTTT
+Result:
+ATTCGT and TCAGCA with 1 non complementary position
+TAGGAA and ATTCGT with 2 non complementary positions
+TCAGCA and ATTCGT with 1 non complementary position
+AAAAAAAAA and TTTTTTTTT
+TTTTTTTTT and AAAAAAAAA
+25. Modify the previous programs so to write the results in a new file
+
+    Python-dictionaries
+
+1. Create an empty dictionary
+2. Use the dictionary to store the age of persons, and add three persons to the dictionary (with their age), including yourself
+3. Find your age in the dictionary
+4. Find the name of the youngest person
+5. Find the age of the youngest person
+6. Remove yourself from the dictionary
+7. Compute the average age
+
+    Python-functions2
+
+1. Define a function to compute the square of a number
+2. Use the function to compute the square of all numbers of a given list
+3. Define a function to check whether a number is even
+4. Using functions from points 1. and 3., define a function that takes an integer and returns its square if it is even, the number itself otherwise
+5. Take program 24. from the if-and-file section. Structure it in a suitable way using functions 
+
+    Python-recursion
+
+1. Define the fibonacci function
+2. Compute fibonacci(20), fibonacci(30) and fibonacci(35)
+3. Define a recursive function to compute the function f defined by:
+   f(0) = 1
+   f(1) = 7
+   f(n) = n * f(n-2) if n>1
+4. Define a recursive function to double all the elements of a list of integers
+5. Define a recursive function to double all the elements of a list of integers until a 0 is found
+6. Define a recursive function to compute the partial sums of a list of integers
+7. Define a function to compute the permutations of a list
+
+    Python-while
+
+1. Use a while loop to compute the sum of a list of integers
+2. Use a while loop to compute the partial sums of a list of integers
+3. Use a while loop to print all the characters of a string until you find two consecutive equal characters (which should not be printed). Is there any advantage of using a while loop instead of a for loop?
+4. Ask numbers to the users until it inserts an even number. Print the number of tries.
