@@ -15,11 +15,12 @@ print(ages['ich'])
 
 # 4. Find the name of the youngest person
 print('exercize 4')
-# youngest = ages['Peter'] #starts at first entry youngest carries value of the key peter.
-# for el in ages:
-#     if ages[el] < youngest:
-#      youngest = ages[el] # youngest assumes value of current key.
-# print(youngest)
+youngest = ages['Peter'] #starts at first entry youngest carries value of the key peter.
+for el in ages:
+    if ages[el] < youngest:
+     youngest = ages[el] # youngest assumes value of current key.
+# each time el assumes the next key - which is the name of the person.
+print("The name of the younges person is ", el)
 
 # 5. Find the age of the youngest person
 youngest = ages['Peter'] #starts at first entry youngest carries value of the key peter.
