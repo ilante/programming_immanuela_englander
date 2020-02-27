@@ -58,7 +58,8 @@ def global_alignment(seq1, seq2, substitutionMatrix, gap_penalty):
 
     return S,P
 
-S, P = global_alignment('ADCDN', 'AWCN', matrices.blosum62, -4)
+S, P = global_alignment('ADCDN', 'AWCN', matrices.blosum62, -4) # variable S and P are defined and hold now whatever the funciton
+# global_alignment returns.
 
 print(S)
 print('dir')
