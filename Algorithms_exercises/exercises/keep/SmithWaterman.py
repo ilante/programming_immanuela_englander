@@ -8,7 +8,7 @@ def global_alignment(seq1, seq2, scoringMtrx, gap_penalty):
     # S: zero matrix of dimensions num_rows * num_cols (m * n)
     # P: asterisk matrix of dimensions num_rows * num_cols (m * n)
 
-    S = [[0] * num_cols for m in range(num_rows)]   
+    S = [[0] * num_cols for m in range(num_rows)] 
     P = [['*'] * num_cols for m in range(num_rows)] 
 
     # 2. fill first column and first row
@@ -17,17 +17,17 @@ def global_alignment(seq1, seq2, scoringMtrx, gap_penalty):
 
     for i in range(num_rows):       # REMEMBER: can only iterate in RANGE(...) TypeError: 'int' object is not iterable
         S[i][0] = gap_penalty * i
-        P[i][0] = 'v'
+        P[i][0] = 'v' #vertical
 
     for j in range(num_cols):       # again REMEMBER can only iterate on RANGE(...) TypeError: 'int' object is not iterable
         S[0][j] = gap_penalty * j
-        P[0][j] = 'h'
+        P[0][j] = 'h' #horizontal
 
     # 3. Fill inn scores  remaining fields of S 
     # since i and j 0 are filled in already: we start from i and j ONE  !!!
 
     for i in range(1, num_rows):       # RANGE(1, num_rows)
-        for j in range(1, num_cols):   # RANGE 
+        for j in range(1, num_cols):   # RANGE(1, num_cols) 
 
             Diagonal_score = S[i-1][j-1] + scoringMtrx[seq1[i-1] + seq2[j-1]] 
             Vertical_score = S[i-1][j] + gap_penalty 
