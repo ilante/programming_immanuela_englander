@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Fri Feb 14 13:18:20 2020
+Created on Wed March 04 18:38:20 2020
 
-@author: naiara modyfied by ila
+@author: immanuela 
 
 NEEDLEMAN-WUNSCH - Global alignment WITH GAPS
 """
 import matrices
 
 def glob_al_NW(seq1, seq2, substitutionMatrix, gap_penalty):
-    """ Does global alignment employing dynamic programming with help of the Needleman-Wunsch algorithm. Needs 2 sequences, one scoring matrix such as BLOSUM or PAM and a gap penalty as input. It creates matrix S (containing    the score) and the path matrix P (containing the path for backtracking). It returns both S and P and the maximum score."""
+    """ Does global alignment employing dynamic programming employing the Needleman-Wunsch algorithm. Needs 2 sequences, one scoring matrix such as BLOSUM or PAM and a gap penalty as input. It creates matrix S (containing the score) and the path matrix P (containing the path for backtracking). It returns both S and P and the maximum score."""
     num_rows = len(seq1) + 1 # M[0][0] filled with 0 plus seq1 (is on the "vertical dimension" of the matix) and determines the number of rows. This also determines the lenght of each column
     num_cols = len(seq2) + 1 # Here its M[0][0] filled with 0 plus seq2 across "horizontal dimension" that determines the length of each row plus 
 
