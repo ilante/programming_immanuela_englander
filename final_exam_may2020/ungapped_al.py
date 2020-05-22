@@ -1,3 +1,4 @@
+# final version
 def score_aln(s1, s2, scoring_dict):
     tot_score = 0                   # initiate score at 0 
     for i in range(len(s1)):        # counts
