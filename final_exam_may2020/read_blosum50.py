@@ -26,8 +26,8 @@ def subsmat_from_txt(filename):
             scoringmatrix_dict[pairlist[l]] = numscoreli[l]
         return scoringmatrix_dict
     
-matrix = subsmat_from_txt("tinymatrix.txt",)
-print(matrix)    
+# matrix = subsmat_from_txt("tinymatrix.txt",) # testing on the tinymatrix.txt
+# print(matrix)    
 
 matrix = subsmat_from_txt("blosum50.txt")
-print(matrix)
+print('blosum50 =', matrix)
