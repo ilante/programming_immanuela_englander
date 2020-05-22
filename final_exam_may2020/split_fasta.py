@@ -1,4 +1,4 @@
-# a)
+# a) final version
 # Thoughts
 # - use either .readlines() to generate string of entire file and then .split('>')
 # - or try with a loop that skipps the line containing '>' and saves the rest 
