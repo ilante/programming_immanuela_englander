@@ -1,4 +1,4 @@
-'''Smith Waterman (Examples: p 95/96 Concepts in Bioinformatics and Genomics, J. Momand, A. McCurdy)
+'''Final version Smith Waterman (Examples: p 95/96 Concepts in Bioinformatics and Genomics, J. Momand, A. McCurdy)
 Developed by Temple Smith and Michael Waterman in 1981. We need to make three changes to the N-W program.
 1) Modifying the equation by adding a fourth option: 0 for the calculation of S i, j. 
 Thus no element can be less than zero. 
