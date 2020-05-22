@@ -60,52 +60,54 @@ def smith_waterman_alignment(seq1, seq2, scoringMtrx, gap_penalty):
     # P: with directions: for 1st row "h" ; for 1st col: "v"
 
     for i in range(num_rows):       # REMEMBER: can only iterate in RANGE(...) TypeError: 'int' object is not iterable
-        P[i][0] = 'v' # filling first col with letter indicating vertical move up is saved in P matrix
+        P[i][0] = 'v' #vertical move up
 
     for j in range(num_cols):       # 
-        P[0][j] = 'h' # filling first row with letter indicating horizontal move left is saved in P matrix
+        P[0][j] = 'h' #horizontal move left
 
-    # 3. Fill inn scores into remaining fields of S 
+    # 3. Fill inn scores  remaining fields of S 
     # since i and j 0 are filled in already: we start from i and j ONE  !!!
 
     for i in range(1, num_rows):       # because 0 is filled already range must start at 1
         for j in range(1, num_cols):   # same here 0 is filled above so range starts one later
 
-            Diagonal_score = S[i-1][j-1] + scoringMtrx[seq1[i-1] + seq2[j-1]] #Store diagonal score in variable
-            Vertical_score = S[i-1][j] + gap_penalty  #Store vertical score in variable
-            Horizontal_score= S[i][j-1] + gap_penalty #Store horizontal score in variable
+            Diagonal_score = S[i-1][j-1] + scoringMtrx[seq1[i-1] + seq2[j-1]] 
+            Vertical_score = S[i-1][j] + gap_penalty 
+            Horizontal_score= S[i][j-1] + gap_penalty 
 
             # 4. find maximum of the score to determine direction (diagonal 'd', vertical 'v' or horizontal 'h'
 
-            max_score = max(Diagonal_score, Vertical_score, Horizontal_score, 0) #for SW need to include 0 into the maximum function !!!
+            max_score = max(Diagonal_score, Vertical_score, Horizontal_score, 0) #for NW need to include 0 into the max fct. !!!
 
-            # 5. fill inn directional information into the open fields of the P matrix
+            # 5. fill inn directional information into the P matrix
             
             if max_score == Diagonal_score:
-                P[i][j] = 'd'    # letter indicating diagonal move up is saved in P matrix
+                P[i][j] = 'd'
             elif max_score == Vertical_score:
-                P[i][j] = 'v'    # letter indicating vertical move up is saved in P matrix
+                P[i][j] = 'v'
             else:
-                P[i][j] = 'h'    # letter indicating horizontal move corssover is saved in P 
+                P[i][j] = 'h'    # Horizontal_score
 
                                  # 6. store value of max_score in corresponding field of S[i][j]:
             S[i][j] = max_score
     
                                  # 7. return both matrices
-    return S, P     # INDENTATION needs to be outside of both loops!!!
+    return S, P     # INDENTATION needs to be outside of both loops
 
 def max_val_mat(M):
-    ''' The function takes as input a matrix. It returns the maximum value found in the matrix and its position M_i,j '''
-    max_val = M[0][0]                  # starts at top left corner
-    pos_i = 0                          # to later store the value of i of the best field
-    pos_j = 0                          # to later store the value of j of the best field
+    ''' The function takes as an input a matrix. It returns maximum value found in the matrix and its position M_i,j '''
+    max_val = M[0][0]
+    mi = 0
+    nj = 0
     for i in range(len(M)):
         for j in range(len(M[0])):
             if M[i][j] > max_val:
                 max_val = M[i][j]
-                pos_i = i
-                pos_j = j
-    return pos_i, pos_j, max_val
+                mi = i
+                nj = j
+
+    return mi, nj, max_val
+
 
 def many_val_mat(M, val):
     ''' The function takes as input a matrix and a value. It returns a list of the positions with the same value M_i,j '''
@@ -118,71 +120,70 @@ def many_val_mat(M, val):
                 same_val_list.append((i, j))
     return same_val_list
 
-# Pseudocode:
-#     - function takes as input s1 s2, ScoringMatrix S and PathMatrix P.
-#     - need to put the maximum value from the S matrix into the variable i, j and max I can do that by calling my function max_val_mat() and pass S.
-#     - define variables for the strings of the s1 and s2. REMEMBER backtracking reads backwards. They need to be flipped later.
-#     - use a while loop to track back until a 0 is met.
-#     - retrieve letter of the sequence by acessing the dict and save to the variable
-#     - decrememnt i and j according to the situation (d, v, h)
-#     - flip both s1 and s2 so they are read in the right direction
-#     - return s1, s2 and score
 
 def traceback_SW_best_alignment(seq1, seq2, S, P):
-    ''' Function performes back tracking to determine the best alignment of template (seq1) and target (seq2). The moves are either:
-    - diagonal: match/mismatch 
-    - vertical/top:       gap in sequence 1
-    - horizontal/left:     gap in sequence 2
+    ''' Function performes back tracking to determine the best alignment of template (seq1) and target (seq2). 
     Function returns template_seq1, target_seq2 and score'''
     
-    i,j,max = max_val_mat(S)                # assigning variables to each output of the function. Indeces i,j of max value = starting point of traceback
+    i,j,max = max_val_mat(S) # index of max value = starting point of traceback
     
-    score = S[i][j]                         # 'score' the highest value
-    rev_template_seq1 = ''                  # 'rev_...' because by backtracing we first obtain each sequence backwards so we need to flip it again
+    score = S[i][j]            # 'score' the highest value
+    rev_template_seq1 = ''     # 'rev_...' because by backtracing we first obtain each sequence backwards so we need to flip it again
     rev_target_seq2 = '' 
    
-    while S[i][j] != 0:                     # loop continues until it encounters ZERO
-        if P[i][j] == 'd':                  # match or mismatch from diagonal
+    while S[i][j] != 0:                # loop continues until it encounters ZERO
+        print("Showing direction, index of backtracking and the value of the current cell")
+        if P[i][j] == 'd':             # match or mismatch from diagonal
             rev_template_seq1 += seq1[i-1]
             rev_target_seq2 += seq2[j-1]
             i -= 1                     
-            j -= 1                          # decrement both i and j                    
+            j -= 1                          # decrement both i and j 
+            print('d')                     
             
         elif P[i][j] == 'v':           
             rev_template_seq1 += '-'        # vertical: from top: gap is introduced in seq1
             rev_target_seq2 += seq1[i-1]
-            i -= 1                          # Here ONLY i is decremented   
+            i -= 1                          # Here only i is decremented   
+            print('v')
         else:                            
             rev_template_seq1 += seq2[j-1]
             rev_target_seq2 += '-'          # so if P[i][j] was from 'h' horizontal move --> introduce gap into seq2
-            j -= 1                          # Here ONLY j is decremented  
+            j -= 1                          # Here only j is decremented  
+            print('h')
+        print("i", i, 'j', j, S[i][j])
+        
+        # reverse needs to be corrected : turn around
+        template_seq1 = rev_template_seq1[::-1]
+        target_seq2 = rev_target_seq2[::-1]
 
-        # print("i", i, 'j', j, S[i][j])    # testprint
-                                                    
-        template_seq1 = rev_template_seq1[::-1] # reverse needs to be flipped : turn around seq1
-        target_seq2 = rev_target_seq2[::-1]     # flip seq2
+        # return alignment and score
     return template_seq1, target_seq2, score    # return the Sequence 1, Sequence 2 and the Score
 
+
 ################ CHECKING ###############################################
+
 # try it with example from Concepts in Bioinformatics and genomics page 96 
-# and veryfy with https://gtuckerkellogg.github.io/pairwise/demo/ 
-# >
+# and veryfy with https://gtuckerkellogg.github.io/pairwise/demo/  :
+
 s1 = 'PAWHEAE' ; s2 =  "HEAGAWGHEE"
-S, P = smith_waterman_alignment(s1, s2, blosum50, -8) # unpacked S and P from function global_alignment
-print(max_val_mat(S), 'i, j, and Maxvalue')
+S, P = smith_waterman_alignment(s1, s2, blosum50, -8) # unpacked S and P from function global_alignment fct
+
+print(max_val_mat(S), 'i, j of the maximum and the maximum')
 
 print("This is the Path Matrix, holding the path for backtracking")
-for line in P:
+for line in P:   # to print the matrix P
     print(line)
 print('')
-print("This is the Score Matrix, holding the score of each pair")    
-for line in S:
+print("This is the Score Matrix, holding the score of each pair")
+for line in S:   # to print the matrix S
     print(line)
+    
 # call function traceback_best_alignment OBVIOUSLY with same parameters
 # and unpack what it returns: >> template_seq1, target_seq2, score
-template_seq1, target_seq2, score = traceback_SW_best_alignment(s1, s2, S, P)
 
-print('The alinment:')
+template_seq1, target_seq2, score = traceback_SW_best_alignment(s1, s2, S, P) # unpacking variables from treceback_SW_best_alignment
 print(template_seq1)
 print(target_seq2)
 print('the score is ', score)
+
+# print(many_val_mat(S,18)) # to see if it finds me equal values
