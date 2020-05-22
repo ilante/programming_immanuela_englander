@@ -1,3 +1,4 @@
+#final version
 def subsmat_from_txt(filename):
     '''Take as input a filename (must be written between '') of a matrix does not contain a header. 
     It returns a substitution matrix. '''
