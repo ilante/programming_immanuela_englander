@@ -1,5 +1,7 @@
 # final version
 def score_aln(s1, s2, scoring_dict):
+    '''Takes two sequences and a scoring dictionary as input, and returnes
+    the the alignment score of 2 sequences of the same lenght'''
     tot_score = 0                   # initiate score at 0 
     for i in range(len(s1)):        # counts
         pair = s1[i] + s2[i]        # pair concattenation of s1 and s2 at corresponding index
@@ -7,7 +9,10 @@ def score_aln(s1, s2, scoring_dict):
             tot_score += scoring_dict[pair] # increment total score by value from scoring dict
     return tot_score
 
-def ungapped_best_aln (s1, s2, scoring_dict):                         # - - T C A         
+def ungapped_best_aln (s1, s2, scoring_dict): 
+    '''Takes as input 2 sequences (can be of different length) and a scoring dictionary. Returns an ungapped
+    alignment and its score.'''                                        # 1 2 3 4 5
+                                                                       # - - T C A         
     aln_len = len(s1) + len(s2)         # sum length of the alignment  G A - - - 
     fill_gaps1 = list("-" * len(s2))    # generating as many gaps as necessary - always as long as the other sequence
     fill_gaps2 = list("-" * len(s1))
@@ -21,8 +26,8 @@ def ungapped_best_aln (s1, s2, scoring_dict):                         # - - T C 
 
         if score > best_score:          # only if score is larger than the best_score,
            
-            best_score = score
-            best_pair = ["".join(aln[0]), "".join(aln[1])] 
+            best_score = score          # best_score takes value of 'score' if lager than 'best_score'
+            best_pair = ["".join(aln[0]), "".join(aln[1])] # assignes the best scoring alignment to 'best_pair'
      
 #             print(aln) [['-', '-', 'T', 'G', 'A'], ['G', 'A', '-', '-', '-']]
 

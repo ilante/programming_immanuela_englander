@@ -38,4 +38,3 @@ seqtuple = split_fasta("Q9IQN3.fasta") #calling the funciton on the file that co
 print(seqtuple) #Printing the tuple see if it works
 seq1, seq2 = seqtuple # unpacking the tuple
 print("This is sequence 1 :\n",seq1, "\nThis is sequence 2 :\n",seq2) # printing each seq 
-
