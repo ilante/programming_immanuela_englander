@@ -1,0 +1,22 @@
+1.Write a function that takes a string and returns true if the number of
+'A' in even positions is equal to the number of 'A' in odd positions.
+
+Write a function that takes a file handler and prints on the screen
+the number of A in the first two lines. Write a program that invokes
+the function on a file named "pippo.txt".
+
+Write a program that takes strings from the user till the user
+inserts a "STOP" and prints the number of the read elements.
+
+Define a recursive function to compute the maximum value in a list
+of positive integers.
+
+2.1) Write a function that takes as input a string and returns True if it contains at least three "G", else return False
+2) Write a function that takes as input a list (the list must contain at least two elements) and returns the maximum of the last two elements of the list
+3) write a function that takes as input a file and returns the number of characters of the first line of the file (assume that the file exists and has at least two lines). Then, call the function with a file that has been taken from input
+4) write a program that asks a string from input until the user writes "Hello!" then print the number of inserted strings
+
+3.1) scrivi una funzione che prenda una stringa come input e ritorni "True" se contiene esattamente una "A" e "False" in caso contrario
+2) scrivi un programma che prenda un integer come input dall' user finch'e9 l'user non inserisce 0, e restituisce la somma dei numeri precedentemente inseriti
+3) definisci un dizionario la se seguenti Key: Ivan, Allegra, Pietro e come valori Lanese, Via, Dilena, dopodich'e9 stampa a schermo il primo valore in lettere maiuscole
+4) definisci una funzione ricorsiva per definire il numero di caratteri "A, C, G e T" presenti in una stringa}
